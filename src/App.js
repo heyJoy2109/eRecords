@@ -1,24 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./styles/app.css";
+import { AddUser, Records } from "./pages";
+import { AppProducer } from "./context/AppContext";
+import { Button } from "./components";
 
 function App() {
+  const [showAddUser, setUser] = useState(false);
+  // will add route for both the pages instead of toggling
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AppProducer>
+      <div className="App">
+        {showAddUser ? <AddUser /> : <Records />}
+        <Button
+          label={showAddUser ? "Show Added Records" : "Add More Records"}
+          onClick={() => setUser(!showAddUser)}
+          disable={false}
+        />
+      </div>
+    </AppProducer>
   );
 }
 
