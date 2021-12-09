@@ -6,6 +6,7 @@ const InputBox = ({
   value,
   type = "text",
   onChange,
+  placeholder,
   onchange,
   labelColor,
   defaultValue,
@@ -13,7 +14,12 @@ const InputBox = ({
   return (
     <div className="input-wrapper">
       <label className="custom-label">{label}</label>
-      <input onChange={onChange} type={type} value={value} />
+      <input
+        onChange={onChange}
+        placeholder={placeholder}
+        type={type}
+        value={value}
+      />
     </div>
   );
 };
